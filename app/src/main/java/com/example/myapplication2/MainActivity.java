@@ -6,27 +6,33 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    TextView text1, text2;
-    EditText et1,et2;
+    private EditText etName,etYear;
+    private TextView tvShowDetails;
+    private String name,details;
+    private int year;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        text1=findViewById(R.id.date);
-        text2=findViewById(R.id.add);
-        et1=findViewById(R.id.name);
-        et2=findViewById(R.id.born);
+        etName=findViewById(R.id.etName);
+        etYear=findViewById(R.id.etYear);
+        tvShowDetails=findViewById(R.id.tvShowDetails);
 
     }
-
-    private void agree(View view) {
-        String name,year;
-        name=et1.getText().toString();
-        year=et2.getText().toString();
-        int y=Integer.parseInt(year);
-        int Age=2024-y;
-        text2.setText(y+"your age is: "+Age);
+    public void shoDetails(View view){
+        if(etName.getText().toString().isEmpty() || etYear.getText().toString().isEmpty()){
+            Toast.makeText(this,"Please fill in fields..",Toast.LENGTH_LONG).show();
+        }
+        else {
+            name=etName.getText().toString();
+            year=Integer.parseInt(etYear.getText().toString());
+            int age=2024-year;
+            details="Welcome "+name+"\nYour age is "+age+" years";
+            tvShowDetails.setText(details);
+        }
     }
 }
