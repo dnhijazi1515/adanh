@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvShowDetails;
     private String name,details;
     private int year;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
